@@ -1,59 +1,32 @@
+/*You are given two non-empty linked lists representing two non-negative integers.
+The digits are stored in reverse order and each of their 
+nodes contain a single digit. Add the two numbers and return it as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.*/
+
+/*
+Example
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+Explanation: 342 + 465 = 807.
+*/
+
 #include<stdio.h>
 #include<malloc.h>
 #include<stdbool.h>
 
-typedef struct ListNode {
+
+/*Definition for singly-linked list.*/
+struct ListNode {
 	int val;
 	struct ListNode *next;
-}*PNode;
+};
 
-//struct ListNode* creatList1() {
-//	struct ListNode *p1 = (struct ListNode*)malloc(sizeof(struct ListNode));
-//	p1->val = 2;
-//	p1->next->val = 4;      //这么写是不对的，应该要先创建一个新的节点，然后再赋值。。
-//	p1->next->next->val = 3;
-//	p1->next->next->next = NULL;
-//	return p1;
-//}
-struct ListNode* creatList1() {
-	struct ListNode *p1 = (struct ListNode*)malloc(sizeof(struct ListNode));
-	p1->next = NULL;
-	struct ListNode *ptail = p1;
-	int A[] = { 2,4,3 };
-	int i;
-	for (i = 0; i < 3; i++) {
-		struct ListNode *newNode = (struct ListNode*)malloc(sizeof(struct ListNode));
-		newNode->val = A[i];
-		newNode->next = NULL;
-		ptail->next = newNode;
-		ptail = newNode;
-	}
-	return p1;
-}
-struct ListNode* creatList2() {
-	struct ListNode *p2 = (struct ListNode*)malloc(sizeof(struct ListNode));
-	p2->next = NULL;
-	struct ListNode *ptail = p2;
-	int A[] = { 5,6,4 };
-	int i;
-	for (i = 0; i < 3; i++) {
-		struct ListNode *newNode = (struct ListNode*)malloc(sizeof(struct ListNode));
-		newNode->val = A[i];
-		newNode->next = NULL;
-		ptail->next = newNode;
-		ptail = newNode;
-	}
-	return p2;
-}
-
-struct ListNode* addTwoNumbers() {
-	struct ListNode *p1 = creatList1();
-	struct ListNode *p2 = creatList2();
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
+	struct ListNode *p1 = l1;
+	struct ListNode *p2 = l2;
 	struct ListNode *phead = (struct ListNode*)malloc(sizeof(struct ListNode));
-	phead->next = NULL;
-	phead->val = 0;
-	//struct ListNode *ptail = phead;
-	int x, y, sum,ans;
+	struct ListNode *ptail = phead;
+	int x, y, sum, ans;
 	int carry = 0;
 	while (p1 || p2) {
 		if (p1) {
@@ -72,31 +45,15 @@ struct ListNode* addTwoNumbers() {
 		struct ListNode *NewNode = (struct ListNode*)malloc(sizeof(struct ListNode));
 		NewNode->val = ans;
 		NewNode->next = NULL;
-		NewNode->next = phead->next ;  //替换头结点 
-		phead->next = NewNode;               
+		ptail->next = NewNode;
+		ptail = NewNode;
 	}
 	if (carry > 0) {
 		struct ListNode *NewNode = (struct ListNode*)malloc(sizeof(struct ListNode));
-		NewNode->val = 1;
+		NewNode->val = carry;
 		NewNode->next = NULL;
-		NewNode->next = phead->next;  //替换头结点 
-		phead = NewNode;
+		ptail->next = NewNode;
+		ptail = NewNode;
 	}
-	return phead;
-}
-
-//打印整个链表
-void traverse(PNode pHead) {
-	PNode p = pHead->next;
-	while (p != NULL) {
-		printf("%d   ", p->val);
-		p = p->next;
-	}
-	printf("\n");
-}
-
-int main() {
-	PNode p = addTwoNumbers();
-	traverse(p);
-	return 0;
+	return phead->next;
 }
