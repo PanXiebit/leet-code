@@ -13,7 +13,7 @@ public:
 				m = 10 * m + temp % 10;
 				temp /= 10;
 			}
-		return (m == x);
+		return (x>0 && m == x);
 	}
 };
 
