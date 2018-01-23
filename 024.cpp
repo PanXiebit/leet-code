@@ -25,19 +25,33 @@ public:
 			return head;
 		ListNode temp(0);
 		temp.next = head;
-		ListNode *p = &temp,* q = head;
-		while (q&&q->next) {
-			p->next = q->next;
-			p = p->next;
-			q->next = p->next;
-			p->next = q;
+		ListNode *p = &temp, *q, *r;
+		while (p->next&&p->next->next) {
+			q = p->next;
+			r = q->next;
+			p->next = r;
+			q->next = r->next;
+			r->next = q;
+			
 			p = q;
-			q = q->next;
+			
 		}
 		return temp.next;
 	}
 };
 
 int main() {
-
+	ListNode *phead = (ListNode*)malloc(sizeof(ListNode));
+	phead->next = NULL;
+	ListNode *ptail = phead;
+	for (int i = 0; i < 2; i++) {
+		ListNode *pNode = (ListNode*)malloc(sizeof(ListNode));
+		pNode->val = i+1;
+		pNode->next = NULL;
+		ptail->next = pNode;
+		ptail = pNode;
+	}
+	Solution sss;
+	sss.swapPairs(phead->next);
+	return 0;
 }
