@@ -110,7 +110,7 @@ public:
 
 int main() {
 	Solution ss;
-	string s = "1+21*(2+3)";
+	string s = "1+21*(2+3)";   //106
 	cout << "s.size = " << s.size() << endl;
 	int aaa = ss.calculate(s);
 	cout << aaa << endl;
