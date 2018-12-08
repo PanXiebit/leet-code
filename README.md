@@ -1,27 +1,10 @@
-﻿基本上写了解题思路是比较难，需要在好好再刷的题~~
+﻿# Leetcode
+
+Doing leetcode exercise by the topics every day.
 
 
+# dynamic programming
 
-commit的时候不能写中文啊。。蛋疼，倒是有教程，但暂时不想花时间弄这个，所以写在这儿吧
-
-
-
-Q1: hashtable/dictionary
+[算法分析，递归、迭代、动态规划](http://localhost:4000/2018/12/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%951-%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/)
 
 
-
-Q3: point moving
-
-
-
-Q5: DP
-
-
-
-Q11: time limited
-
-
-
-Q21: list exercise 
-
-Q23: 链表数组，vector元素是链表的头结点
