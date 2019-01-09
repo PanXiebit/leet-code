@@ -12,9 +12,21 @@ void convert(stack<char>& S, int n, int base){//十进制到base进制的转换�
 		}
 }
 
+void convert2(stack<char> &S, int n, int base){ // 迭代版
+		const char digit[] = 	"0123456789BCDEF";
+		while (n >0)
+		{
+				int remainder = int (n % base);
+				S.push(digit[remainder]);
+				n /= base;
+		}
+}
+
+
+
 int main(){
 	stack<char> S;
-	convert(S, 10, 2);
+	convert2(S, 10, 2);
 	char a = S.top();
 	while (!S.empty()){
 			char a = S.top();
