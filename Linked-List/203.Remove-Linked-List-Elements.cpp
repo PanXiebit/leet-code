@@ -28,7 +28,7 @@ public:
         while(p && p->next)
         {
             if (p->next->val == val)
-                p->next = p->next->next;
+                p->next = p->next->next; // 这里需要注意，删除节点之后 p 不能后移，而需要继续检验新来的节点
             else
                 p = p->next;
         }
